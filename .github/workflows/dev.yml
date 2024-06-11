@@ -53,3 +53,17 @@ jobs:
         run: tar -xvf setup.tar
       - name: Running Pint
         run: vendor/bin/pint --test --dirty --config pint.json
+
+  phpstan:
+    name: PHPStan Check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Setup Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: setup-artifact
+      - name: Extraction
+        run: tar -xvf setup.tar
+      - name: Running Phpstan
+        run: vendor/bin/phpstan analyse -c phpstan.neon

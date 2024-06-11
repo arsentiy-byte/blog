@@ -32,3 +32,6 @@ pint-test:
 
 pint:
 	- docker-compose -f docker-compose.yml exec blog vendor/bin/pint --config pint.json
+
+phpstan:
+	- docker-compose -f docker-compose.yml exec blog vendor/bin/phpstan analyse -c phpstan.neon

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Traits;
+namespace App\Infrastructure\Traits;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;

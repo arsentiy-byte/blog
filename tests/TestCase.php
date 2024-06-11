@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use App\Traits\ConfigTrait;
+use App\Infrastructure\Traits\ConfigTrait;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+use RuntimeException;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -18,7 +19,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if ( ! $this->isTestingEnvironment()) {
-            dd('Конфиги указаны неправильно, попробуйте почистить кэш');
+            throw new RuntimeException('Конфиги указаны неправильно, попробуйте почистить кэш');
         }
     }
 }

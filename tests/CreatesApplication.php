@@ -18,7 +18,6 @@ trait CreatesApplication
     protected function setUp(): void
     {
         parent::setUp();
-        $this->refreshTestDatabase();
         $this->runDatabaseMigrations();
         $this->seed();
     }

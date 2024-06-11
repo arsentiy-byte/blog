@@ -38,3 +38,6 @@ phpstan:
 
 test:
 	- docker-compose -f docker-compose.yml exec blog vendor/bin/phpunit
+
+swagger:
+	- docker-compose -f docker-compose.yml exec blog php artisan l5-swagger:generate

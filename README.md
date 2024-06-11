@@ -4,3 +4,4 @@
 
 - [Зависимости](docs/dependencies.md)
 - [Сборка и запуск](docs/build.md)
+- [Линтеры](docs/lints.md)

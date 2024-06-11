@@ -26,3 +26,9 @@ check-env:
 ifeq (,$(wildcard ./.env))
 	cp .env.example .env
 endif
+
+pint-test:
+	- docker-compose -f docker-compose.yml exec blog vendor/bin/pint --test --dirty --config pint.json
+
+pint:
+	- docker-compose -f docker-compose.yml exec blog vendor/bin/pint --config pint.json

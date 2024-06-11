@@ -35,3 +35,6 @@ pint:
 
 phpstan:
 	- docker-compose -f docker-compose.yml exec blog vendor/bin/phpstan analyse -c phpstan.neon
+
+test:
+	- docker-compose -f docker-compose.yml exec blog vendor/bin/phpunit

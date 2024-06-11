@@ -81,3 +81,26 @@ jobs:
 
       - name: Running Phpstan
         run: vendor/bin/phpstan analyse -c phpstan.neon
+
+  test-suite:
+    name: Feature and Unit tests
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Download Setup Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: setup-artifact
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Extraction
+        run: tar -xvf setup.tar
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          APP_ENV: testing
+        run: vendor/bin/phpunit

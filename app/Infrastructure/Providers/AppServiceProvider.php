@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Providers;
 
+use App\Domain\Contracts\Services\AuthenticationServiceContract;
+use App\Infrastructure\Services\AuthenticationService;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -11,13 +13,9 @@ use Illuminate\Support\ServiceProvider;
 
 final class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-
-    }
+    public array $bindings = [
+        AuthenticationServiceContract::class => AuthenticationService::class,
+    ];
 
     /**
      * Bootstrap any application services.

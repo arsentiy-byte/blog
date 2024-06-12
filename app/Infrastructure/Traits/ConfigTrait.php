@@ -38,4 +38,9 @@ trait ConfigTrait
     {
         return App::environment();
     }
+
+    protected function getPersonalAccessTokenName(): string
+    {
+        return config('app.personal_access_token_name');
+    }
 }

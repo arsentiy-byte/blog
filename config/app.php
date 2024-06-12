@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'personal_access_token_name' => env('PERSONAL_ACCESS_TOKEN_NAME', 'default'),
+
 ];

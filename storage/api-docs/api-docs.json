@@ -13,6 +13,37 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Login",
+                "description": "User logins",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User has successfully signed in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResultResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api": {
             "get": {
                 "tags": [
@@ -138,6 +169,21 @@
     },
     "components": {
         "schemas": {
+            "LoginRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "ManageUserRequest": {
                 "required": [
                     "name",
@@ -152,6 +198,31 @@
                         "type": "string"
                     },
                     "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginResultResource": {
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserResource"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
                         "type": "string"
                     }
                 },

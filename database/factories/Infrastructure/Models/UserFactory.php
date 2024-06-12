@@ -27,7 +27,7 @@ final class UserFactory extends Factory
             'id' => $this->faker->uuid,
             'name' => $this->faker->name,
             'email' => $this->faker->email,
-            'password' => $this->faker->password,
+            'password' => $this->faker->password(8),
         ];
     }
 }

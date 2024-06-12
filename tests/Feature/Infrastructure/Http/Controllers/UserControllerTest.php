@@ -16,7 +16,7 @@ final class UserControllerTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user, 'api');
 
-        $password = $this->faker->password;
+        $password = $this->faker->password(8);
 
         $response = $this->post(route('api-users-create'), [
             'name' => $this->faker->name,
@@ -39,7 +39,7 @@ final class UserControllerTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user, 'api');
 
-        $password = $this->faker->password;
+        $password = $this->faker->password(8);
 
         $response = $this->put(route('api-users-update', [
             'user' => $user->id,

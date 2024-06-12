@@ -25,7 +25,7 @@ final class UserRepositoryTest extends TestCase
             $this->faker->uuid,
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $this->repository->save($user);
@@ -43,7 +43,7 @@ final class UserRepositoryTest extends TestCase
             $this->faker->uuid,
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $this->repository->save($user);
@@ -63,7 +63,7 @@ final class UserRepositoryTest extends TestCase
             $this->faker->uuid,
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $this->repository->save($user);
@@ -81,7 +81,7 @@ final class UserRepositoryTest extends TestCase
             $this->faker->uuid,
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $this->repository->save($user);

@@ -31,7 +31,7 @@ final class UserUseCaseTest extends TestCase
         $dto = new CreateUserUseCaseDTO(
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $this->useCase->create($uuid, $dto);
@@ -53,7 +53,7 @@ final class UserUseCaseTest extends TestCase
                 new CreateUserUseCaseDTO(
                     $this->faker->name,
                     $this->faker->email,
-                    $this->faker->password,
+                    $this->faker->password(8),
                 )
             );
 
@@ -62,7 +62,7 @@ final class UserUseCaseTest extends TestCase
         $dto = new UpdateUserUseCaseDTO(
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $this->useCase->update($user, $dto);
@@ -82,7 +82,7 @@ final class UserUseCaseTest extends TestCase
                 new CreateUserUseCaseDTO(
                     $this->faker->name,
                     $this->faker->email,
-                    $this->faker->password,
+                    $this->faker->password(8),
                 )
             );
 

@@ -17,7 +17,7 @@ final class UserTest extends TestCase
         $vo = new CreateVO(
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $user = User::create($uuid, $vo);
@@ -35,14 +35,14 @@ final class UserTest extends TestCase
             new CreateVO(
                 $this->faker->name,
                 $this->faker->email,
-                $this->faker->password,
+                $this->faker->password(8),
             )
         );
 
         $vo = new UpdateVO(
             $this->faker->name,
             $this->faker->email,
-            $this->faker->password,
+            $this->faker->password(8),
         );
 
         $user->update($vo);

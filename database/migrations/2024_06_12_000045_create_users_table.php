@@ -13,11 +13,12 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('oauth_refresh_tokens', static function (Blueprint $table): void {
-            $table->string('id', 100)->primary();
-            $table->string('access_token_id', 100)->index();
-            $table->boolean('revoked');
-            $table->dateTime('expires_at')->nullable();
+        Schema::create('users', static function (Blueprint $table): void {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oauth_refresh_tokens');
+        Schema::dropIfExists('users');
     }
 };

@@ -1,0 +1,233 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "blog.localhost",
+        "description": "",
+        "contact": {
+            "email": "arsentiy.zhunussov@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Login",
+                "description": "User logins",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User has successfully signed in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResultResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api": {
+            "get": {
+                "tags": [
+                    "developers"
+                ],
+                "summary": "Base action",
+                "description": "",
+                "operationId": "base",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Something went wrong..."
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create user",
+                "description": "Creates user",
+                "operationId": "users-create",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer token"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ManageUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User has successfully created"
+                    }
+                }
+            }
+        },
+        "/api/users/{user}": {
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update user",
+                "description": "Updates user",
+                "operationId": "users-update",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer token"
+                    },
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "example": "8c002ba4-945e-460f-993c-33c7707f1c7b",
+                        "description": "User ID"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ManageUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User has successfully updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Delete user",
+                "description": "Deletes user",
+                "operationId": "users-delete",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer token"
+                    },
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "example": "8c002ba4-945e-460f-993c-33c7707f1c7b",
+                        "description": "User ID"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "User has successfully deleted"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ManageUserRequest": {
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginResultResource": {
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserResource"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
